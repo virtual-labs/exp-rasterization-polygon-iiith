@@ -1,1 +1,1 @@
-## Experiment name
+## Rasterization: Polygon
