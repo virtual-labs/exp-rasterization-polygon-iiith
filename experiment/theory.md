@@ -5,9 +5,9 @@ Input : Vertices of the polygon, (xi, yi) âi = {1, 2, ..., n}, n = #vertices in
 
   - Edge Table (ET) : Contains all the edges (except horizontal edges) of the polygon sorted by their smaller y-coordinates. All the edges having equal smaller y-coordinates are kept in the same bucket, where they are sorted by the corresponding x-coordinate.  
     In each cell, the following information is maintained:  
-        y_upper : last scanline to consider for this edge  
-        x_lower : corresponding x coordinate for the smaller value y value of the edge  
-        1/m : to compute the corresponding x coordinate of the edge for each scanline  
+        y_upper : last scanline to consider for this edge    
+        x_lower : corresponding x coordinate for the smaller value y value of the edge    
+        1/m : to compute the corresponding x coordinate of the edge for each scanline     
    - Active Edge Table (AET) : Contains the edges that intersect with the current scan line. For each scan line, the edges are sorted in an increasing order of the x coordinate of the point of intersection.  
     In each cell, the following information is maintained:  
         y_upper : last scanline to consider for this edge  
