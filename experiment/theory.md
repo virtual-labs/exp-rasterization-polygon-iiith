@@ -1,6 +1,7 @@
 **Scan Line Polygon Fill Algorithm**  
 
 Pseudo Code of the algorithm  
+
 Input : Vertices of the polygon, (xi, yi) ∀i = {1, 2, ..., n}, n = #vertices in the polygon. We have the following data structures to maintain data:     
 
 - Edge Table (ET) : Contains all the edges (except horizontal edges) of the polygon sorted by their smaller y-coordinates. All the edges having equal smaller y-coordinates are kept in the same bucket, where they are sorted by the corresponding x-coordinate.  
@@ -37,7 +38,7 @@ If there are n entries in AET (n will always even), then the following pixels wi
 - 1st entry to 2nd entry
 
 - 3rd entry to 4th entry
-
+ 
 - ... 
 
 - (n-1)th entry to nth entry
@@ -45,7 +46,6 @@ If there are n entries in AET (n will always even), then the following pixels wi
 - Increment y by 1 (to the coordinate of the next scanline).  
 
 - For each nonvertical edge remaining in the AET, update x for the new y.  
-
 
 Until AET and ET are non empty  
 
