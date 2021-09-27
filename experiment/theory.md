@@ -1,25 +1,23 @@
 **Scan Line Polygon Fill Algorithm**  
 
 Pseudo Code of the algorithm  
-Input : Vertices of the polygon, (xi, yi) âi = {1, 2, ..., n}, n = #vertices in the polygon. We have the following data structures to maintain data:     
+Input : Vertices of the polygon, (xi, yi) ∀i = {1, 2, ..., n}, n = #vertices in the polygon. We have the following data structures to maintain data:     
 
-  - Edge Table (ET) : Contains all the edges (except horizontal edges) of the polygon sorted by their smaller y-coordinates. All the edges having equal smaller y-coordinates are kept in the same bucket, where they are sorted by the corresponding x-coordinate.  
-    In each cell, the following information is maintained:  
-        y_upper : last scanline to consider for this edge    
-        x_lower : corresponding x coordinate for the smaller value y value of the edge    
-        1/m : to compute the corresponding x coordinate of the edge for each scanline     
-   - Active Edge Table (AET) : Contains the edges that intersect with the current scan line. For each scan line, the edges are sorted in an increasing order of the x coordinate of the point of intersection.  
-    In each cell, the following information is maintained:  
-        y_upper : last scanline to consider for this edge  
-        x_lower : x coordinate value of the edge for the present scan line  
-        1/m : to compute the corresponding x coordinate of the edge for each scanline  
+- Edge Table (ET) : Contains all the edges (except horizontal edges) of the polygon sorted by their smaller y-coordinates. All the edges having equal smaller y-coordinates are kept in the same bucket, where they are sorted by the corresponding x-coordinate.  
+ In each cell, the following information is maintained:  
+   i. y_upper : last scanline to consider for this edge    
+   ii. x_lower : corresponding x coordinate for the smaller value y value of the edge    
+   iii. 1/m : to compute the corresponding x coordinate of the edge for each scanline     
+- Active Edge Table (AET) : Contains the edges that intersect with the current scan line. For each scan line, the edges are sorted in an increasing order of the x coordinate of the point of intersection.  
+ In each cell, the following information is maintained:  
+   i. y_upper : last scanline to consider for this edge  
+   ii. x_lower : x coordinate value of the edge for the present scan line  
+    iii. 1/m : to compute the corresponding x coordinate of the edge for each scanline  
 
 **Steps of the Algorithm**  
 
-    1. AET is initially empty.  
-
-    2. scan_value = Value of y-coordinate for the first nonempty bucket. This is the first scan line from where filling will start.  
-
+    1. AET is initially empty.  <br/>
+    2. scan_value = Value of y-coordinate for the first nonempty bucket. This is the first scan line from where filling will start.  <br/>
     3. Do  
         	
        - From ET[scan_value] bucket, all entries are inserted in AET which satisfy the condition : ymin = scan_value. This is to include the new edges which have their smaller y value equal to the present scan line.  
@@ -27,13 +25,9 @@ Input : Vertices of the polygon, (xi, yi) âi = {1, 2, ..., n}, n = #vertices in
        - From AET, remove the entries which satisfy the condition, ymax = scan_value, i.e., remove the edges not intersecting with the next scanline  
 
        - Please note that there will be one entry for edges in Fig. 1 and two entries for edges in Fig. 2  
-
-        Figure 1 :   
- 
-           <img src="images/image1.png">  changes to <img src="images/image3.png"">
-        Figure 2 :   
-
-	   <img src="images/image2.png">
+	
+	
+<img src="images/figures.png">
         	
         	
        - Sort all the entries in AET w.r.t. the x-coordinate of the intersection point of the edge with the present scan line.  
