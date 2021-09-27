@@ -12,7 +12,7 @@ Input : Vertices of the polygon, (xi, yi) ∀i = {1, 2, ..., n}, n = #vertices i
  In each cell, the following information is maintained:  
    i. y_upper : last scanline to consider for this edge  
    ii. x_lower : x coordinate value of the edge for the present scan line  
-    iii. 1/m : to compute the corresponding x coordinate of the edge for each scanline  
+   iii. 1/m : to compute the corresponding x coordinate of the edge for each scanline  
 
 **Steps of the Algorithm**  
 
