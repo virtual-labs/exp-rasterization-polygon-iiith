@@ -1,7 +1,7 @@
 **Scan Line Polygon Fill Algorithm**  
 
 Pseudo Code of the algorithm  
-Input : Vertices of the polygon, (xi, yi) âi = {1, 2, ..., n}, n = #vertices in the polygon. We have the following data structures to maintain data:     
+Input : Vertices of the polygon, (xi, yi) ∀i = {1, 2, ..., n}, n = #vertices in the polygon. We have the following data structures to maintain data:     
 
 - Edge Table (ET) : Contains all the edges (except horizontal edges) of the polygon sorted by their smaller y-coordinates. All the edges having equal smaller y-coordinates are kept in the same bucket, where they are sorted by the corresponding x-coordinate.  
  In each cell, the following information is maintained:  
@@ -27,7 +27,7 @@ Input : Vertices of the polygon, (xi, yi) âi = {1, 2, ..., n}, n = #vertices in
        - Please note that there will be one entry for edges in Fig. 1 and two entries for edges in Fig. 2  
 	
 	
-	<img src="images/figures.png">
+<img src="images/figures.png">
         	
         	
        - Sort all the entries in AET w.r.t. the x-coordinate of the intersection point of the edge with the present scan line.  
