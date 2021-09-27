@@ -16,8 +16,8 @@ Input : Vertices of the polygon, (xi, yi) ∀i = {1, 2, ..., n}, n = #vertices i
 
 **Steps of the Algorithm**  
 
-    1. AET is initially empty.  <br/>
-    2. scan_value = Value of y-coordinate for the first nonempty bucket. This is the first scan line from where filling will start.  <br/>
+    1. AET is initially empty.  
+    2. scan_value = Value of y-coordinate for the first nonempty bucket. This is the first scan line from where filling will start.  
     3. Do  
         	
        - From ET[scan_value] bucket, all entries are inserted in AET which satisfy the condition : ymin = scan_value. This is to include the new edges which have their smaller y value equal to the present scan line.  
