@@ -34,7 +34,7 @@ Figure 1 :
 
 changes to 
 
-<img src="images/image3.png"">
+<img src="images/image3.png">
        
 Figure 2 :   
 
