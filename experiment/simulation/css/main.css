@@ -1,1 +1,108 @@
-/* You CSS goes in here */
+.page {
+    overflow: hidden;
+    margin: 1rem;
+}
+
+.text {
+    text-align: center;
+}
+
+.v-canvas-container {
+    width: 101%;
+    height: 100%;
+    color: black;
+}
+
+.v-datalist-container {
+    height: 100%;
+    margin: 0;
+}
+
+.v-slider-full {
+    width: 80%;
+}
+
+.input-form {
+    display: none;
+    color: black;
+}
+
+.add {
+    font-size: 0.90rem;
+}
+
+.left {
+    order: 1;
+}
+
+.exp {
+    order: 2;
+}
+
+.button-div {
+    order: 3;
+}
+
+#top-border {
+    border-top: 1px solid black;
+}
+
+.v-datalist-title {
+    /* background-color: #2C9AD1; */
+    /* background-blend-mode: overlay; */
+    /* border-radius: 1rem; */
+    border-bottom: 0;
+}
+
+.v-collapsible-instruction-container {
+    width: 60%;
+    margin: auto;
+    border-radius: 0.25rem;
+}
+
+.v-collapsible {
+    width: 98%;
+    margin: auto;
+}
+
+.v-collapsible::after {
+    size: 1rem;
+}
+
+.v-checkbox {
+    margin-bottom: 0.1rem;
+}
+
+@media screen and (max-width: 800px) {
+    .left {
+        order: 1;
+    }
+    .button-div {
+        order: 2;
+    }
+    .exp {
+        order: 2;
+    }
+}
+
+.v-button {
+    background-color: #04AA6D;
+    border-radius: 0.5rem;
+    font-size: small;
+    /* width: 30%; */
+}
+
+.next-btn {
+    background-color: #3298dc;
+    border-radius: 0.5rem;
+}
+
+.previous-btn {
+    background-color: #48c774;
+    border-radius: 0.5rem;
+}
+
+.reset-btn {
+    background-color: #f14668;
+    border-radius: 0.5rem;
+}
