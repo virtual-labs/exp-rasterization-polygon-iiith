@@ -1,0 +1,7 @@
+
+/home/runner/work/exp-rasterization-polygon-iiith/exp-rasterization-polygon-iiith/experiment/simulation/main.js
+  121:14  warning  'i' is already defined     no-redeclare
+  172:13  warning  'y' is assigned to itself  no-self-assign
+
+✖ 2 problems (0 errors, 2 warnings)
+
