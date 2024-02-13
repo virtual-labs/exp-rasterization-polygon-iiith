@@ -60,6 +60,13 @@
     border-radius: 0.25rem;
 }
 
+.v-instruction-container {
+    width: 80%;
+    margin: 0 auto;
+    border:.2rem solid #97d23d;
+    justify-content: flex-start;
+}
+
 .v-collapsible {
     width: 98%;
     margin: auto;
