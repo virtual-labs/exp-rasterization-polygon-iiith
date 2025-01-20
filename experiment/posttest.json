@@ -1,0 +1,56 @@
+    {
+    "version": 1.0,
+    "questions": [
+        {
+        "question": "1. In the Scanline Algorithm, what is the primary reason for sorting the edges in the Edge Table (ET) by their y-min value?",
+        "answers": {
+            "a": "To minimize the number of comparisons during the rasterization process.",
+            "b": "To ensure edges are processed sequentially as the scanline moves downward.",
+            "c": "To group edges that belong to the same polygon together.",
+            "d": "To prioritize horizontal edges over vertical edges."
+        },
+        "correctAnswer": "b",
+        "explanations": {
+            "a": "Incorrect. Sorting by y-min does not directly minimize comparisons.",
+            "b": "Correct. Sorting by y-min ensures edges are activated in the correct order as the scanline progresses.",
+            "c": "Incorrect. Sorting does not group edges by polygon.",
+            "d": "Incorrect. Horizontal edges are not prioritized over vertical edges."
+        },
+        "difficulty": "advanced"
+        },
+        {
+        "question": "2. How does the Scanline Algorithm handle edges that intersect at the same scanline during rasterization?",
+        "answers": {
+            "a": "By processing edges from left to right based on their x-coordinates.",
+            "b": "By discarding one of the edges to avoid overlap.",
+            "c": "By merging the intersecting edges into a single edge.",
+            "d": "By using the parity rule to determine which pixels to fill."
+        },
+        "correctAnswer": "d",
+        "explanations": {
+            "a": "Incorrect. Processing from left to right alone does not resolve intersection issues.",
+            "b": "Incorrect. Edges are not discarded; they are managed using the parity rule.",
+            "c": "Incorrect. Edges are not merged during intersections.",
+            "d": "Correct. The parity rule ensures correct filling for edges intersecting at the same scanline."
+        },
+        "difficulty": "advanced"
+        },
+        {
+        "question": "3. What is the significance of incrementing x-coordinates by 1/m during the scanline filling process?",
+        "answers": {
+            "a": "To calculate the slope of the polygon's edge.",
+            "b": "To ensure the Active Edge Table (AET) remains sorted.",
+            "c": "To track the intersection points of edges with the current scanline.",
+            "d": "To adjust for changes in the polygon's color intensity."
+        },
+        "correctAnswer": "c",
+        "explanations": {
+            "a": "Incorrect. Incrementing x-coordinates by 1/m is not used for slope calculation.",
+            "b": "Incorrect. Sorting the AET is handled separately, not through 1/m increments.",
+            "c": "Correct. Incrementing by 1/m updates the intersection points for the next scanline.",
+            "d": "Incorrect. Color intensity is not adjusted using 1/m increments."
+        },
+        "difficulty": "advanced"
+        }
+    ]
+    }
