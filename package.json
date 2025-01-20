@@ -1,0 +1,23 @@
+{
+  "name": "exp-rasterization-polygon-iiith",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/virtual-labs/exp-rasterization-polygon-iiith.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/virtual-labs/exp-rasterization-polygon-iiith/issues"
+  },
+  "homepage": "https://github.com/virtual-labs/exp-rasterization-polygon-iiith#readme",
+  "dependencies": {
+    "@virtual-labs/buildexp": "^2.1.0"
+  }
+}
