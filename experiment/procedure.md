@@ -1,4 +1,4 @@
-## Procedure for the Scan Line Polygon Fill Experiment
+### Procedure 
 
 
 1. **Draw the Polygon**:
