@@ -1,80 +1,89 @@
+## **Scanline Algorithm**
 
-# Scanline Algorithm
-
-The **Scanline Algorithm** is used in **computer graphics** to efficiently fill polygons or detect intersections. It processes one horizontal line (scanline) at a time and determines which sections of the scanline are inside the polygon.
-
-
-## Key Concepts
-
-1. **Active Edge Table (AET)**:
-   - A dynamic list that maintains edges of the polygon currently intersecting the scanline.
-   - Edges in the AET are sorted by their **x-coordinates** of intersection with the scanline.
-
-2. **Edge Table (ET)**:
-   - A static structure that stores all edges of the polygon, grouped by their starting **y-coordinate**.
-   - Each entry includes:
-     - Starting and ending coordinates of the edge.
-     - The **slope inverse** (1/m) for calculating the next x-coordinate.
-
-3. **Parity Rule**:
-   - The **parity rule** helps determine which parts of a scanline lie inside the polygon:
-     - When a scanline crosses a polygon edge, the **parity** flips (odd ↔ even).
-     - Inside regions occur between pairs of edges where parity is odd.
-
-## Parity Rule
-
-The **parity rule** is used to determine whether a point on a scanline is inside or outside the polygon. It works by flipping the parity (even ↔ odd) each time a scanline crosses an edge of the polygon.
-
-- **Parity = 0 (even)**: The point is outside the polygon.
-- **Parity = 1 (odd)**: The point is inside the polygon.
-
-### How the Parity Rule Works:
-1. **Initial Parity**: Start with parity = 0 (outside the polygon).
-2. **Intersection with edges**:
-   - For each intersection of the scanline with an edge:
-     - If the scanline enters the polygon (crosses from outside to inside), **increment the parity**.
-     - If the scanline leaves the polygon (crosses from inside to outside), **decrement the parity**.
-3. **Fill spans**: When parity is odd, the span between two intersections should be filled (inside the polygon).
+The **Scanline Algorithm** is a powerful technique in **computer graphics** used to efficiently **fill polygons** or detect **intersections**. It operates by processing the polygon **one horizontal line (or scanline) at a time**. By analyzing the intersections of polygon edges with each scanline, the algorithm determines which pixels within that scanline should be filled.
 
 
-## Steps of the Algorithm
+## **Key Concepts**
 
-### 1. **Initialization**
-   - Create an **Edge Table (ET)**:
-     - Sort edges by their starting **y-coordinate**.
-     - Ignore horizontal edges (as they don't affect filling).
-   - Initialize the **Active Edge Table (AET)** as empty.
+### **1. Edge Table (ET):**
+- A **static data structure** that stores information about all the edges of the polygon.
+- Edges are typically **grouped in the ET based on their starting y-coordinate**.
+- Each edge entry usually contains:
+  - **Starting (x₁, y₁) and ending (x₂, y₂) coordinates.**
+  - **Slope inverse (1/m):** Used to efficiently calculate the x-coordinate of the edge's intersection with subsequent scanlines.
 
-### 2. **Process Scanlines**
-   - Iterate through scanlines from the lowest to the highest **y-coordinate** of the polygon:
-     1. **Add edges** to the AET:
-        - Add edges from the ET that start at the current scanline.
-     2. **Remove edges** from the AET:
-        - Remove edges whose ending **y-coordinate** equals the current scanline.
-     3. **Sort the AET**:
-        - Sort edges in the AET by their x-coordinates.
-     4. **Fill spans**:
-        - Use the **parity rule** to identify spans (pairs of x-coordinates) and fill them.
+### **2. Active Edge Table (AET):**
+- A **dynamic list** that maintains only the edges of the polygon currently intersecting the **current scanline**.
+- Edges in the AET are **sorted in increasing order of their x-coordinates** of intersection with the current scanline. This sorting is crucial for efficient filling.
 
-### 3. **Update Edge Information**
-   - Update the **x-coordinates** of edges in the AET for the next scanline:
-     - Use the slope inverse to increment the x-coordinate.
-
-### 4. **Repeat**
-   - Continue until all scanlines are processed.
+### **3. Parity Rule:**
+- A simple rule used to determine whether a given point on the scanline lies **inside or outside** the polygon:
+  - Initially, **parity is set to 0 (outside).**
+  - **Parity flips** (0 → 1 or 1 → 0) whenever the scanline crosses a polygon edge.
+  - **Parity = 1 (odd):** The point lies inside the polygon.
+  - **Parity = 0 (even):** The point lies outside the polygon.
 
 
-## Advantages
-- Efficient for filling complex polygons.
-- Handles non-convex polygons and polygons with holes.
+## **Steps of the Algorithm**
+
+### **1. Initialization:**
+1. **Create the Edge Table (ET):**
+   - Sort all edges by their **starting y-coordinate**.
+   - Calculate the **slope inverse (1/m)** for each edge.
+2. Initialize the **Active Edge Table (AET)** as empty.
 
 
-## Limitations
-- Doesn't directly handle self-intersecting polygons.
-- Requires preprocessing of edges (like sorting).
+### **2. Process Scanlines:**
+Iterate through each scanline from the **lowest** to the **highest y-coordinate** of the polygon:
+
+#### **a. Add Edges:**
+- Add edges from the ET to the AET if their **starting y-coordinate** matches the **current scanline's y-coordinate**.
+
+#### **b. Remove Edges:**
+- Remove edges from the AET if their **ending y-coordinate** matches the **current scanline's y-coordinate**.
+
+#### **c. Sort AET:**
+- Sort the edges in the AET by their **x-coordinates** in ascending order.
 
 
-## Applications
-- Rasterizing polygons in computer graphics.
-- Rendering 2D shapes in games and CAD systems.
+### **3. Fill Spans:**
+- Use the **parity rule**:
+  1. Start with **parity = 0**.
+  2. For each pair of consecutive edges in the AET:
+     - If **parity = 1**, fill the pixels between the **x-coordinates** of the edges.
+     - Flip the parity.
 
+
+### **4. Update AET:**
+- For each edge in the AET:
+  - Update the **x-coordinate** of the edge's intersection with the next scanline using the **slope inverse (1/m)**.
+
+
+### **5. Repeat:**
+- Continue processing scanlines until all scanlines within the **polygon's bounds** have been processed.
+
+
+## **Advantages**
+1. **Efficiency:**
+   - Particularly efficient for filling **complex polygons** with many edges.
+2. **Versatility:**
+   - Handles **non-convex polygons**, polygons with **holes**, and even polygons with **overlapping edges**.
+
+
+## **Limitations**
+1. **Preprocessing:**
+   - Requires **sorting** and **slope calculation** as a preprocessing step.
+2. **Self-Intersections:**
+   - May require special handling for **self-intersecting polygons**.
+
+
+## **Applications**
+1. **Rasterization:**
+   - Filling polygons in **computer graphics rendering pipelines**.
+2. **2D Shape Rendering:**
+   - Rendering **2D shapes** in games, CAD software, and other applications.
+3. **Clipping:**
+   - Can be adapted for **polygon clipping algorithms**.
+
+
+This detailed explanation provides a comprehensive understanding of the **Scanline Algorithm** and its **key concepts**, ensuring clarity for students and beginners.
