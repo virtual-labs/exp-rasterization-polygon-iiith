@@ -1,11 +1,29 @@
-1. Fix the size of the frame buffer (the default parameters are already filled in the input boxes) and then click on **Enter**.    
-   You can also proceed directly to the experiment using the default parameters of the size of frame buffer and the vertices of a polygon, by clicking on **Start Experiment with Default Values**.    
-2. Enter the vertices of the polygon in the input box.      
-	  Let, (x1, y1), (x2, y2), (x3, y3), (x4, y4), (x5, y5)    
-     represent the vertices of the polygon in order, i.e., the 1st vertex is connected to the 2nd and 2nd to the 3rd and so on. The last vertex is connected to the 1st to complete the polygon.       
-    The default vertices are already filled in the input boxes. Once you have finalized the coordinates, you can click on **Start Experiment** to begin with the experiment.  
-    You can also go **Back** to change the values of the frame buffer.    
+### Procedure 
 
-3. Throughout the experiment, you can click on **Next Iteration** to go tothe next step of the algorithm and **Previous Iteration** to go to the previous step.      
-4. Once the experiment ends, you can again experiment with a new set of vertices of the polygon.   
 
+1. **Draw the Polygon**:
+   - Click on the canvas to place the vertices and form a polygon. 
+   - To complete the polygon, click near the first vertex to close the shape. 
+   - The coordinates of each vertex will be displayed in the **Vertex Coordinates** section.
+
+2. **Edit the Vertices**:
+   - To adjust any vertex, hold the **left mouse button** on a vertex and drag it to the desired location.
+   - Alternatively, click the **x** and **y** coordinates in the **Vertex Coordinates** section to manually edit the position of the vertex.
+
+3. **Start the Fill Process**:
+   - Once the polygon is complete, click the **Start Fill** button to begin the Scan Line Fill simulation.
+   - The algorithm will begin calculating intersection points for each scan line.
+
+4. **Control Iterations**:
+   - Use the **Next Step** button to move to the next iteration of the algorithm. You can speed up the simulation by holding down the button.
+   - Click the **Clear Canvas** button to reset the canvas and start over.
+   
+5. **Answer the Question**:
+   - During the simulation, a question will appear in a modal. You must answer correctly to continue.
+   - If the answer is incorrect, the modal will remain open, and you can retry until you answer correctly.
+
+6. **Track Progress**:
+   - The **Algorithm Progress** section on the right will display the current step of the simulation, showing details about active edges and intersection points.
+
+7. **Repeat with New Vertices**:
+   - After the experiment concludes, you can experiment again with new sets of vertices by drawing a new polygon on the canvas and starting the process again.

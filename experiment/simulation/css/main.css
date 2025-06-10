@@ -132,7 +132,11 @@ input[type="number"] {
     margin: 0 auto; /* Center-align the container */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Slightly lighter shadow for smaller screens */
   }
+<<<<<<< HEAD
+   #left.apparatus {
+=======
   #left.apparatus {
+>>>>>>> origin/main
     width: 80vw; /* Adjusting width using viewport width */
     height: 80vh; /* Adjusting height using viewport height */
     border-radius: 16px; /* Rounded corners for a modern look */
@@ -146,6 +150,10 @@ input[type="number"] {
     overflow-y: auto; /* Scrollbar for overflow content */
     /* Any additional styles can be added here */
   }
+<<<<<<< HEAD
+  
+=======
+>>>>>>> origin/main
 }
 
 .v-button {
@@ -448,6 +456,11 @@ input[type="number"] {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add subtle shadow for better visibility */
 }
 
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> origin/main
 .vertex-heading {
   font-family: "Arial", sans-serif;
   font-size: 16px;
@@ -548,7 +561,11 @@ button:disabled {
   background: linear-gradient(135deg, #6a5acd, #87cefa);
   color: white;
   font-weight: bold;
+<<<<<<< HEAD
+  font-family: 'Arial', sans-serif;
+=======
   font-family: "Arial", sans-serif;
+>>>>>>> origin/main
   font-size: 12px;
   border-radius: 12px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
@@ -819,6 +836,10 @@ button:disabled {
   color: #f56565;
 }
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> origin/main
 .coord-value {
   display: inline-block;
   min-width: 45px;

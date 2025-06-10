@@ -2,72 +2,187 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/css/style.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.5-b/css/style.min.css">
-    <link rel="stylesheet" href="./css/main.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/css/style.min.css" />
+    <link rel="stylesheet" href="./css/main.css" />
 </head>
 
 <body class="page has-text-centered">
+    <div class="columns is-centered column">
 
-    <div class="columns is-centered is-flex ">
-        <div class="column has-text-centered ">
-            <div class="v-collapsible-instruction-container ">
-                <div class="v-collapsible ">Instructions</div>
-                <div id="procedure-message " class="v-content ">
-                    <p style="font-size: 0.9rem; ">
-                        <li>Enter the point co-ordinates</li>
-                        <li>Submit to see the grid form</li>
-                        <li>Now click next and prev to move to next and previous iterations</li>
+        <div id="qaModal" class="modal">
+            <div class="modal-content">
+                <h2 id="questionTitle">Question</h2>
+                <div id="questionText" class="question-container"></div>
+                <div id="optionsContainer" class="options-container"></div>
+                <div id="feedback" class="feedback"></div>
+            </div>
+        </div>
+
+        <div class="v-collapsible-instruction-container">
+            <div class="v-collapsible" id="toggle-instructions"
+                style="cursor: pointer; background: #f1f1f1; padding: 10px; border-radius: 5px;">
+                <strong>Instructions</strong>
+            </div>
+        </div>
+
+        <!-- Fullscreen Instructions Modal -->
+        <div id="procedure-message" class="v-content">
+            <ol>
+                <li class="instr-font">
+                    <strong style="font-size: 19px;">📍 Mouse Position Tracking:</strong>
+                    <ul style="list-style-type: disc; padding-left: 20px;">
+                        <li>As you move the mouse pointer over the canvas, the <strong>Mouse Position</strong> is
+                            displayed in real time
+                            at the top of the canvas.</li>
+                        <li>The coordinates are shown as <strong>X</strong> and <strong>Y</strong>, helping you position
+                            vertices or
+                            adjust points precisely.</li>
+                    </ul>
+                </li>
+
+                <li class="instr-font">
+                    <strong style="font-size: 19px;">🖼️ Drawing the Polygon:</strong>
+                    <ul style="list-style-type: disc; padding-left: 20px;">
+                        <li>Click on the canvas to place vertices and form a polygon.</li>
+                        <li>To close the polygon, connect the <strong>last vertex</strong> to the <strong>first
+                                vertex</strong> by
+                            clicking near the starting vertex.</li>
+                        <li>The coordinates of each vertex will be displayed in the <strong>Vertex Coordinates</strong>
+                            section on the
+                            left.</li>
+                    </ul>
+                </li>
+
+
+            <li class="instr-font">
+                <strong style="font-size: 19px;">✏️ Editing the Vertices:</strong>
+                <ul style="list-style-type: disc; padding-left: 20px;">
+                    <li>To adjust the position of a vertex, hold the <strong>left mouse button</strong> on the vertex and drag it to
+                        the desired location on the canvas.</li>
+                    <li>The <strong>Vertex Coordinates</strong> section will automatically update to reflect the new position of the
+                        moved vertex.</li>
+                    <li>You can also click on the <strong>x</strong> and <strong>y</strong> coordinates in the <strong>Vertex
+                            Coordinates</strong>
+                        section to edit the values directly and reposition the vertex.</li>
+                </ul>
+            </li>
+
+                <li class="instr-font">
+                    <strong style="font-size: 19px;">🖌️ Starting the Fill Process:</strong>
+                    <ul style="list-style-type: disc; padding-left: 20px;">
+                        <li>Once the polygon is complete, click the <strong style="color: #03a54c;">Start Fill</strong>
+                            button to begin the scan-line fill
+                            simulation.</li>
+                        <li>The algorithm will calculate intersection points for each scan line.</li>
+                    </ul>
+                </li>
+
+                <li class="instr-font">
+                    <strong style="font-size: 19px;">🚀 Iteration Controls:</strong>
+                    <p>Use the following controls to navigate through the scan-line fill simulation:</p>
+                    <ul style="list-style-type: disc; padding-left: 20px;">
+                        <li>
+                            <strong style="font-size: 19px;">🔼 <span style="color: #df9b09;">Next Step</span>:</strong>
+                            Move to the
+                            next step of the simulation.
+                            <br /> <strong style="font-size: 19px;">Tip:</strong> Hold the <em><strong> Next
+                                    Step</strong></em> button to speed up the simulation and iterate
+                            through steps faster.
+                        </li>
+                        <li>
+                            <strong style="font-size: 19px;">🔄 <span style="color: #f14668;">Clear
+                                    Canvas</span>:</strong> Reset the
+                            canvas to its initial state and start over.
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="instr-font">
+                    <strong style="font-size: 19px;">❓ Question and Answer Modal:</strong>
+                    <ul style="list-style-type: disc; padding-left: 20px;">
+                        <li>During the simulation, a question will appear in a modal window.</li>
+                        <li>You must answer the question correctly to proceed further in the simulation.</li>
+                        <li>If your answer is incorrect, you cannot close the modal. Click the <strong>cross (X)</strong> icon to reset
+                            the simulation to a neutral state and try again.</li>
+                        <li>Once you answer the question correctly, you can close the modal by clicking the <strong>cross (X)</strong>
+                            icon in top-right corner.</li>
+                    </ul>
+                </li>
+
+
+
+
+                <li class="instr-font">
+                    <strong style="font-size: 19px;">🔍 Tracking Progress:</strong>
+                    <ul style="list-style-type: disc; padding-left: 20px;">
+                        <li>The <strong>Algorithm Progress</strong> section on the right will update with details about
+                            the current step
+                            of the simulation.</li>
+                        <li>Track the intersection points and the active edges for each scan line in real-time.</li>
+                    </ul>
+                </li>
+
+
+                <div style="background-color: #f0f0f0; padding: 5px; margin: 10px 0;">
+                    <p style="font-style: italic; text-align: center; margin: 0;">
+                        Note: This experiment simulation is optimized for desktop screens. While basic functionality is
+                        available on
+                        mobile devices, for the best experience, use a desktop or PC monitor.
                     </p>
                 </div>
-            </div>
+            </ol>
         </div>
     </div>
-    <br>
+    <br />
 
-    <div class="columns is-centered is-variable is-1-mobile is-flex is-flex-wrap-wrap workspace left ">
+    <main class="columns is-centered is-variable is-1-mobile is-flex is-flex-wrap-wrap workspace left">
+        <aside id="left" class="column has-text-centered is-3-desktop is-5-tablet is-5-mobile apparatus">
+            <div class="v-datalist-container">
 
-        <div id="left" class="column has-text-centered is-2-desktop is-5-tablet is-5-mobile apparatus">
-            <div class="v-datalist-container ">
-                <div class="v-datalist-title is-size-8-mobile">Input</div>
-                <div class="v-datalist-row ">
-                    
-                    <div style="float: left;" class="is-size-7-mobile v-content">Line Co-ordinates:</div>
-                    <div>
-                        <p class="is-size-7-mobile">Point 1:</p> 
-                        <div style="display: flexbox; ">
-                            <input class="input is-small " style="width:30% " type="number" id="x1" value="5" placeholder="X ">
-                            <input class="input is-small " style="width:30% " type="number" id="y1" value="5" placeholder="Y ">
-                        </div>
-                    </div>
-                    <div>
-                    <p class="is-size-7-mobile">Point 2:</p>
-                        <div style="display: flexbox; ">
-                            <input class="input is-small " style="width:30% " type="number" id="x2" value="20" placeholder="X ">
-                            <input class="input is-small " style="width:30% " type="number" id="y2" value="20" placeholder="Y ">
-                        </div>
-                    </div>
 
-                    <button class="v-button is-small is-primary is-responsive" style="margin: 0.5rem;" id="submit">Submit</button>
-                </div>
-                <div class="v-datalist-row " id="top-border">
-                    <div class="v-datalist-title is-size-8-mobile">Iteration Controls</div>
-                    <div class="columns is-centered is-flex is-flex-wrap-wrap button-div "style="margin:auto; width: auto; ">
-                        <button style="margin: 1%; " class="v-button next-btn is-responsive " id="next-button">Next</button>
-                        <button style="margin: 1%; " class="v-button previous-btn is-responsive " id="prev-button">Prev</button>
-                        <button style="margin: 1%; " class="v-button reset-btn is-responsive " id="reset-button">Reset</button>
-                    </div>
+                <!-- <div class="info-panel"> -->
+                <h3 class="vertex-heading">Vertex Coordinates</h3>
+                <div id="vertexList" class="vertex-list hide"></div>
+                <!-- </div> -->
+            </div>
+        </aside>
+
+        <!-- const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+         -->
+
+        <div class="column is-7-desktop is-10-tablet is-10-mobile exp">
+            <div class="canvas-container">
+                <div id="coordinates">Mouse Pos =( X: 0, Y: 0 )</div>
+                <canvas id="myCanvas"></canvas>
+                <div class="controls">
+                    <!-- <button id="drawBtn">Draw Polygon</button> -->
+                    <button id="startFillBtn">Start Fill</button>
+                    <button id="nextStepBtn" disabled>Next Step</button>
+                    <button id="clearBtn" onclick="location.reload()">Clear Canvas</button>
                 </div>
             </div>
         </div>
 
-        <div class="column is-10-desktop is-10-tablet is-10-mobile exp">
-            <canvas class="v-canvas-container " id="canvas" style="background-color: black;border:2px solid black; "></canvas>
-        </div>
+        <div id="observations" class="column has-text-centered is-3-desktop is-5-tablet is-5-mobile right">
+            <div class="v-datalist-container" style="max-height: 100%; overflow-y: auto;">
+                <!-- <div class="info-panel"> -->
+                <!-- <h3>Current Intersection Points</h3>
+                    <div id="intersectionPoints" class="intersection-points"></div> -->
+                <h3 class="vertex-heading">Algorithm Progress</h3>
+                <div id="explanation">
+                    Click on the canvas to draw a polygon. Once done, click "Start Fill" to begin the scan-line
+                    process.
+                </div>
+                <!-- </div> -->
+            </div>
 
-        <script src="main.js "></script>
+
+        </div>
+        <script src="./main.js "></script>
         <script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js "></script>
-    </div>
 </body>
+
+</html>
