@@ -1,0 +1,56 @@
+{
+  "version": 1.0,
+  "questions": [
+    {
+      "question": "1. What is the primary purpose of the Scanline Algorithm in polygon rasterization?",
+      "answers": {
+        "a": "To determine the edges of the polygon.",
+        "b": "To fill the interior pixels of a polygon based on its edges.",
+        "c": "To sort the vertices of a polygon.",
+        "d": "To detect intersections between polygons."
+      },
+      "correctAnswer": "b",
+      "explanations": {
+        "a": "Incorrect. Determining edges is only a preparatory step.",
+        "b": "Correct. The Scanline Algorithm is primarily used to fill the interior pixels of a polygon by processing scanlines.",
+        "c": "Incorrect. Sorting vertices is not the main focus of the Scanline Algorithm.",
+        "d": "Incorrect. Intersection detection is not a goal of this algorithm."
+      },
+      "difficulty": "beginner"
+    },
+    {
+      "question": "2. What data structure is essential for implementing the Scanline Algorithm efficiently?",
+      "answers": {
+        "a": "Stack",
+        "b": "Edge Table (ET)",
+        "c": "Binary Search Tree",
+        "d": "Frame Buffer"
+      },
+      "correctAnswer": "b",
+      "explanations": {
+        "a": "Incorrect. A stack is not used in the Scanline Algorithm.",
+        "b": "Correct. The Edge Table (ET) is crucial for storing edges and sorting them based on their properties for efficient scanline processing.",
+        "c": "Incorrect. Binary Search Tree is not used in this algorithm.",
+        "d": "Incorrect. The frame buffer is where the result is displayed, not the data structure for processing."
+      },
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "3. How does the Scanline Algorithm handle polygons with horizontal edges?",
+      "answers": {
+        "a": "Horizontal edges are ignored.",
+        "b": "Horizontal edges are treated as intersections with every scanline.",
+        "c": "Horizontal edges contribute only to the Edge Table (ET) but not the Active Edge Table (AET).",
+        "d": "Horizontal edges are processed to fill all pixels on the scanline directly."
+      },
+      "correctAnswer": "d",
+      "explanations": {
+        "a": "Incorrect. Horizontal edges are not ignored; they contribute to filling the polygon.",
+        "b": "Incorrect. Horizontal edges are not treated as intersections with every scanline.",
+        "c": "Incorrect. Horizontal edges affect both ET and AET.",
+        "d": "Correct. Horizontal edges are processed to fill all pixels along the scanline directly."
+      },
+      "difficulty": "advanced"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+
+/home/runner/work/exp-rasterization-polygon-iiith/exp-rasterization-polygon-iiith/experiment/simulation/main.js
+    7:7   warning  'intersectionPoints' is assigned a value but never used    no-unused-vars
+   13:5   warning  'isDrawing' is assigned a value but never used             no-unused-vars
+  365:10  warning  'drawPolygonOutline' is defined but never used             no-unused-vars
+  581:5   warning  'currentQuestionIndex' is assigned a value but never used  no-unused-vars
+
+✖ 4 problems (0 errors, 4 warnings)
+
